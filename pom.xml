@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.chailei</groupId>
+  <artifactId>spark-train</artifactId>
+  <version>1.0</version>
+  <inceptionYear>2008</inceptionYear>
+  <properties>
+    <scala.version>2.11.8</scala.version>
+    <hive.version>1.1.0</hive.version>
+  </properties>
+
+
+
+  <!--<pluginRepositories>-->
+    <!--<pluginRepository>-->
+      <!--<id>scala-tools.org</id>-->
+      <!--<name>Scala-Tools Maven2 Repository</name>-->
+      <!--<url>http://scala-tools.org/repo-releases</url>-->
+    <!--</pluginRepository>-->
+  <!--</pluginRepositories>-->
+
+  <repositories>
+    <repository>
+      <id>cloudera</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>2.6.0-cdh5.7.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.11</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.hive</groupId>
+      <artifactId>hive-jdbc</artifactId>
+      <version>${hive.version}</version>
+    </dependency>
+
+      <dependency>
+          <groupId>org.apache.hive</groupId>
+          <artifactId>hive-exec</artifactId>
+          <version>${hive.version}</version>
+      </dependency>
+
+
+    <dependency>
+      <groupId>org.apache.flume.flume-ng-clients</groupId>
+      <artifactId>flume-ng-log4jappender</artifactId>
+      <version>1.6.0</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <testSourceDirectory>src/test/scala</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.scala-tools</groupId>
+        <artifactId>maven-scala-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <scalaVersion>${scala.version}</scalaVersion>
+          <args>
+            <arg>-target:jvm-1.5</arg>
+          </args>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+  <reporting>
+    <plugins>
+      <!--<plugin>-->
+        <!--<groupId>org.scala-tools</groupId>-->
+        <!--<artifactId>maven-scala-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--<scalaVersion>${scala.version}</scalaVersion>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+    </plugins>
+  </reporting>
+</project>
