@@ -13,21 +13,24 @@ public class HiveApp {
             e.printStackTrace();
             System.exit(1);
         }
-        Connection con = DriverManager.getConnection("jdbc:hive2://localhost:10000/default", "hadoop", "");
+        Connection con = DriverManager.getConnection("jdbc:hive2://biaoyuan01:10000/default", "root", "");
         Statement stmt = con.createStatement();
-        String tableName = "famlily";
+        String tableName = "page_views";
 
 
 
         // select * query
-        String sql = "select * from " + tableName;
+        String sql = "select * from " + tableName + " limit 5";
         System.out.println("Running: " + sql);
         ResultSet res = stmt.executeQuery(sql);
         while (res.next()) {
-            System.out.println(String.valueOf(res.getInt(1)) + "\t" + res.getString(2) +
+            System.out.println(String.valueOf(res.getString(1)) + "\t" + res.getString(2) + "\t" +
             res.getString(3));
         }
 
+        System.out.println("=====");
+        stmt.close();
+        con.close();
 
     }
 }
